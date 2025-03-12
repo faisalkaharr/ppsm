@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponpes Sabilil Muttaqien - Dokumentasi</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #2b6cb0, #2f855a);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: auto;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.navbar a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: white;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar a:hover::before {
+    transform: scaleX(1);
+}
+
+.navbar a:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+    transform: scale(1.1);
+}
+
+        .title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-top: 100px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .gallery-item {
+            width: 250px;
+            height: 180px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+            position: relative;
+            cursor: pointer;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gallery-item .detail {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .gallery-item:hover .detail {
+            opacity: 1;
+        }
+        .video-section {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+        }
+        .video-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+   <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="ustadz.html">Daftar Ustadz</a>
+        <a href="kitab.html">Kitab</a>
+        <a href="ekskul.html">Ekskul</a>
+        <a href="kegiatan.html">Kegiatan</a>
+        <a href="tingkatan.html">Tingkatan</a>
+		<a href="struktur.html">Struktur Organisasi</a>
+		<a href="pengumuman.html">Pengumuman</a>
+    </div> 
+    
+    <h1 class="title">Dokumentasi Kegiatan Ponpes Sabilil Muttaqien</h1>
+    
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="kegiatan.jpeg" alt="Kegiatan 1">
+            <div class="detail">Kegiatan belajar mengajar di pesantren</div>
+        </div>
+        <div class="gallery-item">
+            <img src="kegiatan.jpeg" alt="Kegiatan 2">
+            <div class="detail">Acara kajian kitab kuning</div>
+        </div>
+        <div class="gallery-item">
+            <img src="santriputra.jpeg" alt="Kegiatan 3">
+            <div class="detail">Santri sedang menghafal Al-Qur'an</div>
+        </div>
+        <div class="gallery-item">
+            <img src="santriputri.jpeg" alt="Kegiatan 4">
+            <div class="detail">Latihan hadroh santri</div>
+        </div>
+        <div class="gallery-item">
+            <img src="ustadz2.jpeg" alt="Kegiatan 5">
+            <div class="detail">Kegiatan pramuka pesantren</div>
+        </div>
+        <div class="gallery-item">
+            <img src="guru.jpeg" alt="Kegiatan 6">
+            <div class="detail">Muhadhoroh dan latihan pidato</div>
+        </div>
+    </div>
+
+    <div class="video-section">
+        <h2>Cek Video YouTube Terbaru Kami</h2>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/-FuFEuN04m8?si=WV3XL8ZoViy8ODqH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/xEPPhKLDY3c?si=iif8W7M3Na19_kTG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+</body>
+</html>

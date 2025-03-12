@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Pembuka</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(to right, #0a3d62, #1abc9c);
+            color: white;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            width: 90%;
+            padding: 20px;
+            max-width: 1200px;
+        }
+        .header img {
+            width: 80px;
+            height: 80px;
+            margin-right: 15px;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .slideshow {
+            width: 90%;
+            max-width: 1200px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        .slides img {
+            width: 100%;
+            border-radius: 10px;
+            display: none;
+        }
+        .slides img:first-child {
+            display: block;
+        }
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            width: 90%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+        .menu a {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .menu a:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.4);
+        }
+        .section {
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .card {
+            background: rgba(10, 61, 98, 0.9);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            background: rgba(26, 188, 156, 0.9);
+        }
+    </style>
+    <script>
+        let slideIndex = 0;
+        function showSlides() {
+            let slides = document.querySelectorAll(".slides img");
+            slides.forEach(slide => slide.style.display = "none");
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 4000);
+        }
+        window.onload = showSlides;
+    </script>
+</head>
+<body>
+    <div class="header">
+        <img src="logo.jpeg" alt="Logo">
+        <h1>Ponpes Sabilil Muttaqien</h1>
+    </div>
+    <div class="slideshow">
+        <div class="slides">
+            <img src="guru.jpeg" alt="Guru">
+            <img src="santriputra.jpeg" alt="Santri Putra">
+            <img src="santriputri.jpeg" alt="Santri Putri">
+            <img src="santriputra2.jpeg" alt="Santri Putra 2">
+        </div>
+    </div>
+    <div class="menu">
+        <a href="ustadz.html">📚 Daftar Ustadz</a>
+        <a href="ekskul.html">🎭 Ekstrakurikuler</a>
+        <a href="dokumentasi.html">📸 Dokumentasi</a>
+        <a href="kegiatan.html">📅 Kegiatan</a>
+        <a href="kitab.html">📖 Kitab yang Dipelajari</a>
+        <a href="tingkatan.html">🏫 Tingkatan</a>
+        <a href="struktur.html">📌 Struktur Organisasi</a>
+        <a href="pengumuman.html">📢 Pengumuman</a>
+    </div>
+    <div class="section">
+        <h2>Profil Pendiri Pondok</h2>
+        <div class="card">
+            <img src="bapayayasan.jpeg" alt="Pendiri Pondok" width="180">
+            <h3>Bapak Drs. Suud Ismail, B.A</h3>
+            <p>Pendiri Pondok Sabilil Muttaqien yang memiliki visi besar dalam pendidikan Islam.</p>
+        </div>
+    </div>
+    <div class="section">
+        <h2>Visi dan Misi</h2>
+        <div class="visi-misi">
+            <div class="card">
+                <h3>Visi</h3>
+                <p>Mewujudkan generasi santri yang berakhlak mulia, berilmu, dan siap menghadapi tantangan zaman dengan nilai-nilai Islam.</p>
+            </div>
+            <div class="card">
+                <h3>Misi</h3>
+                <ul>
+                    <li>Menyediakan pendidikan berbasis Islam yang unggul dan berkualitas.</li>
+                    <li>Membentuk karakter santri yang disiplin, mandiri, dan bertanggung jawab.</li>
+                    <li>Mengembangkan keterampilan santri dalam berbagai bidang ilmu dan teknologi.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
