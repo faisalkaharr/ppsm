@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Pembuka</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
@@ -49,7 +50,7 @@
         }
         .menu {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 kolom */
+            grid-template-columns: repeat(4, 1fr);
             gap: 15px;
             width: 90%;
             max-width: 1200px;
@@ -80,24 +81,73 @@
         .card {
             background: rgba(10, 61, 98, 0.9);
             color: white;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 30px;
+            border-radius: 15px;
             text-align: center;
-            transition: transform 0.3s ease, background 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             width: 100%;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
         }
         .card:hover {
-            transform: scale(1.05);
-            background: rgba(26, 188, 156, 0.9);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
         }
         .visi-misi {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
-            width: 100%;
+            justify-content: center;
+            gap: 30px;
+            width: 90%;
+            max-width: 1200px;
+            margin-bottom: 30px;
         }
         .visi-misi .card {
+            width: 48%;
+            flex: 1;
+        }
+        .sejarah {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 1200px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            text-align: left;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .sejarah h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        footer {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 30px 0;
             width: 100%;
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .social-icons a {
+            color: white;
+            margin: 0 20px;
+            font-size: 24px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #FFD700;
+        }
+        .copyright {
+            font-size: 14px;
+            color: #ccc;
         }
     </style>
     <script>
@@ -145,7 +195,7 @@
         </div>
     </div>
     <div class="section">
-        <h2>Visi dan Misi</h2>
+	<h2>Visi dan Misi</h2>
         <div class="visi-misi">
             <div class="card">
                 <h3>Visi</h3>
@@ -161,5 +211,21 @@
             </div>
         </div>
     </div>
+    <div class="sejarah">
+        <h2>Sejarah Pondok Pesantren Sabilil Muttaqien</h2>
+        <p>Pondok Pesantren Sabilil Muttaqien didirikan pada tahun [Tahun Pendirian] oleh Bapak Drs. Suud Ismail, B.A. dengan tujuan untuk [Tujuan Pendirian]. Sejak awal berdirinya, pondok pesantren ini telah berkomitmen untuk [Komitmen Pondok]. Dengan berlandaskan nilai-nilai [Nilai-Nilai Pondok], pondok pesantren ini terus berupaya untuk [Upaya Pondok].</p>
+    </div>
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/sabilil_muttaqien?igsh=a3pnY2s1M3J5bTIw" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@sabililmuttaqienofficial961?si=o1sLf6J7jESE6bLJ" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Pondok Pesantren Sabilil Muttaqien. Hak Cipta Dilindungi.<br>
+            Kp.Pulo Poncol Rt004/037, Bekasi, Jawa Barat<br>
+            Telp: 08888888 | Email: sabililmuttaqien456@gmail.com
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" integrity="sha512-yTbK3x+wz9jYwnkH2wScvS+AuE2R/z9Zf+mJwGleVk6z+e+z0G/zrtgRgKt+vYj84jz5ZvTj8t8z9l4gAHW1pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>
