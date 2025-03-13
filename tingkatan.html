@@ -7,60 +7,83 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #2b6cb0, #2f855a);
+            background: linear-gradient(to right, #6A1B9A, #42A5F5);
             color: white;
             margin: 0;
             padding: 0;
         }
         .navbar {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 10px 20px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 15px;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: auto;
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    border-radius: 0 0 15px 15px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.navbar a::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background: white;
-    transform: scaleX(0);
-    transition: transform 0.3s ease-in-out;
-}
-
-.navbar a:hover::before {
-    transform: scaleX(1);
-}
-
-.navbar a:hover {
-    background: rgba(255, 255, 255, 0.3);
-    color: #e0e0e0;
-    transform: scale(1.1);
-}
-
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar-links {
+            display: flex;
+            gap: 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .navbar-links.active {
+            max-height: 300px;
+        }
+        .navbar a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: #FFD700;
+            transform: scaleX(0);
+            transition: transform 0.3s ease-in-out;
+        }
+        .navbar a:hover::before {
+            transform: scaleX(1);
+        }
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #FFD700;
+            transform: translateY(-2px);
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #FFD700;
+            margin: 3px 0;
+            transition: 0.4s;
+        }
+        .hamburger.active .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
         .container {
             display: flex;
             flex-direction: column;
@@ -98,20 +121,70 @@
         .text h2 {
             margin: 0;
         }
+        /* Gaya untuk layar ponsel */
+        @media (max-width: 768px) {
+            .navbar-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.1);
+                position: absolute;
+                top: 60px;
+                left: 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+            .navbar-links.active {
+                display: flex;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+        /* Gaya untuk layar PC */
+        @media (min-width: 769px) {
+            .navbar-links {
+                display: flex;
+                max-height: none;
+                overflow: visible;
+            }
+            .hamburger {
+                display: none;
+            }
+        }
     </style>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.navbar-links');
+
+        function toggleNavbar() {
+            navLinks.classList.toggle('active');
+            if (hamburger) {
+                hamburger.classList.toggle('active');
+            }
+
+        }
+    </script>
 </head>
 <body>
-   <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="ustadz.html">Daftar Ustadz</a>
-        <a href="kitab.html">Kitab</a>
-        <a href="ekskul.html">Ekskul</a>
-        <a href="dokumentasi.html">Dokumentasi</a>
-        <a href="kegiatan.html">Kegiatan</a>
-		<a href="struktur.html">Struktur Organisasi</a>
-		<a href="pengumuman.html">Pengumuman</a>
-    </div> 
-    
+    <div class="navbar">
+        <div class="hamburger" onclick="toggleNavbar()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="navbar-links">
+            <a href="index.html">Home</a>
+            <a href="ustadz.html">Daftar Ustadz</a>
+            <a href="kitab.html">Kitab</a>
+            <a href="ekskul.html">Ekskul</a>
+            <a href="dokumentasi.html">Dokumentasi</a>
+            <a href="kegiatan.html">Kegiatan</a>
+            <a href="struktur.html">Struktur Organisasi</a>
+            <a href="pengumuman.html">Pengumuman</a>
+        </div>
+    </div>
+
     <div class="container">
         <div class="tingkatan">
             <img src="santriputra.jpeg" alt="Tingkat 1">
