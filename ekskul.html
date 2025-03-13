@@ -7,63 +7,65 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #2b6cb0, #2f855a);
-            color: white;
+            background: linear-gradient(to right, #6A1B9A, #42A5F5); /* Gradien ungu dan biru */
+            color: #E0E0E0;
             margin: 0;
             padding: 0;
         }
-       .navbar {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 10px 20px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 15px;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: auto;
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    border-radius: 0 0 15px 15px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.navbar a::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background: white;
-    transform: scaleX(0);
-    transition: transform 0.3s ease-in-out;
-}
-
-.navbar a:hover::before {
-    transform: scaleX(1);
-}
-
-.navbar a:hover {
-    background: rgba(255, 255, 255, 0.3);
-    color: #e0e0e0;
-    transform: scale(1.1);
-}
-
+        .navbar {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: auto;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .navbar a {
+            color: #FFD700; /* Warna emas untuk link */
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: #FFD700;
+            transform: scaleX(0);
+            transition: transform 0.3s ease-in-out;
+        }
+        .navbar a:hover::before {
+            transform: scaleX(1);
+        }
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #FFD700;
+            transform: translateY(-2px);
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+        }
         .title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3em;
+            font-weight: 700;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 2px;
             text-align: center;
-            font-size: 2.5em;
             margin-top: 100px;
         }
         .container {
@@ -75,15 +77,16 @@
         .card {
             display: flex;
             align-items: center;
-            background: white;
-            color: black;
+            background: rgba(255, 255, 255, 0.05);
+            color: #E0E0E0;
             width: 80%;
             max-width: 900px;
             border-radius: 15px;
             margin: 20px 0;
             padding: 20px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
+            border: 1px solid #FFD700;
         }
         .card:hover {
             transform: scale(1.03);
@@ -100,7 +103,21 @@
         }
         .card-content h2 {
             margin: 0 0 10px;
-            color: #2b6cb0;
+            color: #FFD700;
+        }
+        /* Gaya untuk layar ponsel */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+                gap: 8px;
+            }
+            .navbar a {
+                width: 100%;
+                text-align: center;
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -112,9 +129,9 @@
         <a href="dokumentasi.html">Dokumentasi</a>
         <a href="kegiatan.html">Kegiatan</a>
         <a href="tingkatan.html">Tingkatan</a>
-		<a href="struktur.html">Struktur Organisasi</a>
-		<a href="pengumuman.html">Pengumuman</a>
-    </div> 
+        <a href="struktur.html">Struktur Organisasi</a>
+        <a href="pengumuman.html">Pengumuman</a>
+    </div>
     
     <h1 class="title">Ekskul di Ponpes Sabilil Muttaqien</h1>
     
