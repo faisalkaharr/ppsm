@@ -75,7 +75,7 @@
             transform: translateY(-8px) rotate(-45deg);
         }
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif; /* Menggunakan font Montserrat */
             background: linear-gradient(to right, #6A1B9A, #42A5F5);
             color: white;
             text-align: center;
@@ -89,14 +89,17 @@
             margin-top: 20px;
         }
         .card {
-            background: white;
-            color: black;
+            background: rgba(255, 255, 255, 0.1); /* Transparan */
+            backdrop-filter: blur(10px); /* Efek blur */
+            color: white;
             width: 300px;
             height: 200px;
             perspective: 1000px;
             cursor: pointer;
-            border-radius: 20px;
+            border-radius: 15px;
             animation: floatAnimation 3s infinite ease-in-out;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
         @keyframes floatAnimation {
             0% { transform: translateY(0px); }
@@ -122,11 +125,12 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            border-radius: 20px;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
         }
         .card-front {
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
         .card-back {
             background: #1e4e8c;
@@ -198,7 +202,6 @@
             if (hamburger) {
                 hamburger.classList.toggle('active');
             }
-
         }
     </script>
 </head>
@@ -215,19 +218,19 @@
             <a href="ekskul.html">Ekskul</a>
             <a href="dokumentasi.html">Dokumentasi</a>
             <a href="kegiatan.html">Kegiatan</a>
-            <a href="tingkatan.html">Tingkatan</a>
+			<a href="tingkatan.html">Tingkatan</a>
             <a href="struktur.html">Struktur Organisasi</a>
             <a href="pengumuman.html">Pengumuman</a>
         </div>
     </div>
 
-    <h1 style="font-size: 2.5em; font-weight: bold; margin-bottom: 20px;">Daftar Kitab Ponpes Sabilil Muttaqien</h1>
+    <h1 style="font-size: 2.5em; font-weight: bold; margin-bottom: 20px; color: #FFD700; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Daftar Kitab Ponpes Sabilil Muttaqien</h1>
 
     <div class="container">
         <script>
             const kitabList = [
                 { name: "Fathul Mu'in", description: "Kitab fiqih madzhab Syafii."},
-				{ name: "Tafsir Jalalain", description: "Kitab tafsir Al-Qur'an yang terkenal dan banyak dipelajari." },
+                { name: "Tafsir Jalalain", description: "Kitab tafsir Al-Qur'an yang terkenal dan banyak dipelajari." },
                 { name: "Riyadhus Shalihin", description: "Kitab kumpulan hadits mengenai akhlak dan keutamaan ibadah." },
                 { name: "Bulughul Maram", description: "Kitab hadits yang berisi dalil-dalil hukum fiqih." },
                 { name: "Al-Hikam", description: "Kitab tasawuf karya Ibnu Atha'illah mengenai hikmah kehidupan." }
