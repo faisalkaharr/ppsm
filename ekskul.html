@@ -26,6 +26,12 @@
         .navbar-links {
             display: flex;
             gap: 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .navbar-links.active {
+            max-height: 300px;
         }
         .navbar a {
             color: #FFD700;
@@ -68,6 +74,15 @@
             background-color: #FFD700;
             margin: 3px 0;
             transition: 0.4s;
+        }
+        .hamburger.active .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
         }
         .title {
             font-family: 'Montserrat', sans-serif;
@@ -137,6 +152,17 @@
                 display: flex;
             }
         }
+        /* Gaya untuk layar PC */
+        @media (min-width: 769px) {
+            .navbar-links {
+                display: flex;
+                max-height: none;
+                overflow: visible;
+            }
+            .hamburger {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -187,16 +213,3 @@
             <div class="card-content">
                 <h2>Kaligrafi</h2>
                 <p>Kelas seni menulis indah dengan huruf Arab untuk meningkatkan kreativitas santri.</p>
-            </div>
-        </div>
-    </div>
-    <script>
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.navbar-links');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    </script>
-</body>
-</html>
