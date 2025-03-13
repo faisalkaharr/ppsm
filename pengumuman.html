@@ -6,32 +6,38 @@
     <title>Pengumuman untuk Wali Santri</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: linear-gradient(to right, #2E7D32, #0288D1);
+            background: linear-gradient(to right, #6A1B9A, #42A5F5);
             color: white;
         }
         .navbar {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px 20px;
             display: flex;
-            justify-content: flex-end;
-            gap: 15px;
-            position: fixed;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: sticky;
             top: 0;
-            right: 0;
-            width: auto;
-            backdrop-filter: blur(10px);
             z-index: 1000;
-            border-radius: 0 0 15px 15px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .navbar-links {
+            display: flex;
+            gap: 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .navbar-links.active {
+            max-height: 300px;
         }
         .navbar a {
-            color: white;
+            color: #FFD700;
             text-decoration: none;
             font-weight: bold;
             padding: 8px 12px;
@@ -47,7 +53,7 @@
             bottom: 0;
             width: 100%;
             height: 2px;
-            background: white;
+            background: #FFD700;
             transform: scaleX(0);
             transition: transform 0.3s ease-in-out;
         }
@@ -55,9 +61,31 @@
             transform: scaleX(1);
         }
         .navbar a:hover {
-            background: rgba(255, 255, 255, 0.3);
-            color: #e0e0e0;
-            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+            color: #FFD700;
+            transform: translateY(-2px);
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #FFD700;
+            margin: 3px 0;
+            transition: 0.4s;
+        }
+        .hamburger.active .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
         }
         .container {
             display: flex;
@@ -67,32 +95,89 @@
             padding: 20px;
         }
         .announcement {
-            background: rgba(46, 125, 50, 0.9);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            width: 80%;
+            max-width: 800px;
         }
         .announcement h3 {
-            margin: 0 0 10px;
-            color: #B2DFDB;
+            margin: 15px 0 5px;
+            color: #FFD700;
+            font-size: 1.3em;
+            font-weight: 600;
         }
         .announcement p {
-            margin: 0;
-            color: #E0F2F1;
+            margin: 10px 0;
+            color: #f0e68c;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+        @media (max-width: 768px) {
+            .navbar-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.1);
+                position: absolute;
+                top: 60px;
+                left: 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+            .navbar-links.active {
+                display: flex;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+        @media (min-width: 769px) {
+            .navbar-links {
+                display: flex;
+                max-height: none;
+                overflow: visible;
+            }
+            .hamburger {
+                display: none;
+            }
         }
     </style>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.navbar-links');
+
+        function toggleNavbar() {
+            navLinks.classList.toggle('active');
+            if (hamburger) {
+                hamburger.classList.toggle('active');
+            }
+
+        }
+    </script>
 </head>
 <body>
-     <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="ustadz.html">Daftar Ustadz</a>
-        <a href="kitab.html">Kitab</a>
-        <a href="ekskul.html">Ekskul</a>
-        <a href="dokumentasi.html">Dokumentasi</a>
-        <a href="kegiatan.html">Kegiatan</a>
-        <a href="tingkatan.html">Tingkatan</a>
-        <a href="struktur.html">Struktur Organisasi</a>
+    <div class="navbar">
+        <div class="hamburger" onclick="toggleNavbar()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="navbar-links">
+            <a href="index.html">Home</a>
+            <a href="ustadz.html">Daftar Ustadz</a>
+            <a href="kitab.html">Kitab</a>
+            <a href="ekskul.html">Ekskul</a>
+            <a href="dokumentasi.html">Dokumentasi</a>
+            <a href="kegiatan.html">Kegiatan</a>
+            <a href="tingkatan.html">Tingkatan</a>
+            <a href="struktur.html">Struktur Organisasi</a>
+            <a href="pengumuman.html">Pengumuman</a>
+        </div>
     </div>
     <div class="container">
         <h1>Pengumuman Pondok</h1>
