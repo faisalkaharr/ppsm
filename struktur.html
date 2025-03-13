@@ -1,281 +1,299 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Pembuka</title>
-    <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: linear-gradient(to right, #6A1B9A, #42A5F5);
-            color: white;
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .navbar-links {
-            display: flex;
-            gap: 15px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        .navbar-links.active {
-            max-height: 300px;
-        }
-        .navbar a {
-            color: #FFD700;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 8px 12px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .navbar a::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 2px;
-            background: #FFD700;
-            transform: scaleX(0);
-            transition: transform 0.3s ease-in-out;
-        }
-        .navbar a:hover::before {
-            transform: scaleX(1);
-        }
-        .navbar a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: #FFD700;
-            transform: translateY(-2px);
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-        }
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-        .hamburger .bar {
-            width: 25px;
-            height: 3px;
-            background-color: #FFD700;
-            margin: 3px 0;
-            transition: 0.4s;
-        }
-        .hamburger.active .bar:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-        .hamburger.active .bar:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.active .bar:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 100px;
-            padding: 20px;
-        }
-        .section {
-            width: 90%;
-            max-width: 1200px;
-            text-align: center;
-            margin-top: 40px;
-        }
-        .section h2 {
-            font-size: 2.5em;
-            font-weight: 600;
-            color: #FFD700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        .org-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-        .org-row {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            width: 100%;
-            margin-bottom: 20px;
-        }
-        .org-card {
-            background: rgba(255, 255, 255, 0.1); /* Transparan */
-            backdrop-filter: blur(10px); /* Efek blur */
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            width: 280px;
-            animation: floatAnimation 3s infinite ease-in-out;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Efek bayangan yang lebih kuat */
-            border: 2px solid rgba(255, 255, 255, 0.3); /* Border yang lebih tebal */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .org-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-        }
-        .org-card img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 4px solid rgba(255, 255, 255, 0.6); /* Bingkai foto yang lebih tebal */
-        }
-        .org-card h3 {
-            margin: 15px 0 5px;
-            color: #FFD700; /* Warna emas untuk nama */
-            font-size: 1.3em;
-            font-weight: 600;
-        }
-        .org-card h4 {
-            margin: 5px 0 10px;
-            color: #e6c200; /* Warna emas yang lebih gelap untuk jabatan */
-            font-size: 1.1em;
-            font-weight: 500;
-        }
-        .org-card p {
-            margin: 10px 0;
-            color: #f0e68c; /* Warna emas yang lebih cerah untuk jobdesc */
-            font-size: 1em;
-            line-height: 1.6;
-        }
-        @keyframes floatAnimation {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-            100% { transform: translateY(0px); }
-        }
-        /* Gaya untuk layar ponsel */
-        @media (max-width: 768px) {
-            .navbar-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background: rgba(255, 255, 255, 0.1);
-                position: absolute;
-                top: 60px;
-                left: 0;
-                text-align: center;
-                padding: 10px 0;
-            }
-            .navbar-links.active {
-                display: flex;
-            }
-            .hamburger {
-                display: flex;
-            }
-            .org-row {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-        /* Gaya untuk layar PC */
-        @media (min-width: 769px) {
-            .navbar-links {
-                display: flex;
-                max-height: none;
-                overflow: visible;
-            }
-            .hamburger {
-                display: none;
-            }
-        }
-    </style>
-    <script>
-        const hamburger = document.querySelector('.hamburger');
-        const nav const navLinks = document.querySelector('.navbar-links');
+	<!DOCTYPE html>
+	<html lang="id">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Halaman Pembuka</title>
+		<style>
+			body {
+				font-family: 'Montserrat', sans-serif;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				background: linear-gradient(to right, #6A1B9A, #42A5F5);
+				color: white;
+			}
+			.navbar {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 10px 20px;
+				background: rgba(255, 255, 255, 0.1);
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+				position: sticky;
+				top: 0;
+				z-index: 1000;
+			}
+			.navbar-links {
+				display: flex;
+				gap: 15px;
+				max-height: 0;
+				overflow: hidden;
+				transition: max-height 0.3s ease-out;
+			}
+			.navbar-links.active {
+				max-height: 300px;
+			}
+			.navbar a {
+				color: #FFD700;
+				text-decoration: none;
+				font-weight: bold;
+				padding: 8px 12px;
+				border-radius: 8px;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+			.navbar a::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				height: 2px;
+				background: #FFD700;
+				transform: scaleX(0);
+				transition: transform 0.3s ease-in-out;
+			}
+			.navbar a:hover::before {
+				transform: scaleX(1);
+			}
+			.navbar a:hover {
+				background: rgba(255, 255, 255, 0.2);
+				color: #FFD700;
+				transform: translateY(-2px);
+				box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+			}
+			.hamburger {
+				display: none;
+				flex-direction: column;
+				cursor: pointer;
+			}
+			.hamburger .bar {
+				width: 25px;
+				height: 3px;
+				background-color: #FFD700;
+				margin: 3px 0;
+				transition: 0.4s;
+			}
+			.hamburger.active .bar:nth-child(1) {
+				transform: translateY(8px) rotate(45deg);
+			}
+			.hamburger.active .bar:nth-child(2) {
+				opacity: 0;
+			}
+			.hamburger.active .bar:nth-child(3) {
+				transform: translateY(-8px) rotate(-45deg);
+			}
+			.container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin-top: 100px;
+				padding: 20px;
+			}
+			.section {
+				width: 90%;
+				max-width: 1200px;
+				text-align: center;
+				margin-top: 40px;
+			}
+			.section h2 {
+				font-size: 2.5em;
+				font-weight: 600;
+				color: #FFD700;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				margin-bottom: 30px;
+				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+			}
+			.org-container {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 20px;
+				width: 100%;
+			}
+			.org-card {
+				background: rgba(255, 255, 255, 0.1);
+				backdrop-filter: blur(10px);
+				color: white;
+				padding: 30px;
+				border-radius: 15px;
+				text-align: center;
+				width: 280px;
+				flex: 1 1 280px;
+				min-width: 250px;
+				animation: floatAnimation 3s infinite ease-in-out;
+				box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+				border: 2px solid rgba(255, 255, 255, 0.3);
+				transition: transform 0.3s ease, box-shadow 0.3s ease;
+			}
+			.org-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+			}
+			.org-card img {
+				width: 140px;
+				height: 140px;
+				border-radius: 50%;
+				object-fit: cover;
+				margin-bottom: 20px;
+				border: 4px solid rgba(255, 255, 255, 0.6);
+			}
+			.org-card h3 {
+				margin: 15px 0 5px;
+				color: #FFD700;
+				font-size: 1.3em;
+				font-weight: 600;
+			}
+			.org-card h4 {
+				margin: 5px 0 10px;
+				color: #e6c200;
+				font-size: 1.1em;
+				font-weight: 500;
+			}
+			.org-card p {
+				margin: 10px 0;
+				color: #f0e68c;
+				font-size: 1em;
+				line-height: 1.6;
+			}
+			@keyframes floatAnimation {
+				0% { transform: translateY(0px); }
+				50% { transform: translateY(-5px); }
+				100% { transform: translateY(0px); }
+			}
+			/* Gaya untuk layar ponsel */
+			@media (max-width: 768px) {
+				.navbar-links {
+					display: none;
+					flex-direction: column;
+					width: 100%;
+					background: rgba(255, 255, 255, 0.1);
+					position: absolute;
+					top: 60px;
+					left: 0;
+					text-align: center;
+					padding: 10px 0;
+				}
+				.navbar-links.active {
+					display: flex;
+				}
+				.hamburger {
+					display: flex;
+				}
+			}
+			/* Gaya untuk layar PC */
+			@media (min-width: 769px) {
+				.navbar-links {
+					display: flex;
+					max-height: none;
+					overflow: visible;
+				}
+				.hamburger {
+					display: none;
+				}
+			}
+		</style>
+		<script>
+			const hamburger = document.querySelector('.hamburger');
+			const navLinks = document.querySelector('.navbar-links');
 
-        function toggleNavbar() {
-            navLinks.classList.toggle('active');
-            if (hamburger) {
-                hamburger.classList.toggle('active');
-            }
+			function toggleNavbar() {
+				navLinks.classList.toggle('active');
+				if (hamburger) {
+					hamburger.classList.toggle('active');
+				}
 
-        }
-    </script>
-</head>
-<body>
-    <div class="navbar">
-        <div class="hamburger" onclick="toggleNavbar()">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-        <div class="navbar-links">
-            <a href="index.html">Home</a>
-            <a href="ustadz.html">Daftar Ustadz</a>
-            <a href="kitab.html">Kitab</a>
-            <a href="ekskul.html">Ekskul</a>
-            <a href="dokumentasi.html">Dokumentasi</a>
-            <a href="kegiatan.html">Kegiatan</a>
-            <a href="tingkatan.html">Tingkatan</a>
-            <a href="struktur.html">Struktur Organisasi</a>
-            <a href="pengumuman.html">Pengumuman</a>
-        </div>
-    </div>
-    <div class="section">
-        <h2>Struktur Organisasi</h2>
-        <div class="org-container">
-            <div class="org-row">
-                <div class="org-card">
-                    <img src="ustadz2.jpeg" alt="Ketua Pondok">
-                    <h3>Ustadz Syakur</h3>
-                    <h4>Ketua Pondok</h4>
-                    <p>Memimpin dan mengarahkan kebijakan pendidikan pondok.</p>
-                </div>
-                <div class="org-card">
-                    <img src="ustadz2.jpeg" alt="Wakil Pondok">
-                    <h3>Ustadz Ismail</h3>
-                    <h4>Wakil Pondok</h4>
-                    <p>Mendukung ketua dalam menjalankan program pondok.</p>
-                </div>
-            </div>
-            <div class="org-row">
-                <div class="org-card">
-                    <img src="ustadz2.jpeg" alt="Bendahara">
-                    <h3>Ustadz Sahal</h3>
-                    <h4>Bendahara</h4>
-                    <p>Mengelola keuangan dan anggaran pondok.</p>
-                </div>
-                <div class="org-card">
-                    <img src="ustadz2.jpeg" alt="Sekretaris">
-                    <h3>Ustadzah Siti</h3>
-                    <h4>Sekretaris</h4>
-                    <p>Mengurus administrasi dan dokumentasi pondok.</p>
-                </div>
-                <div class="org-card">
-                    <img src="ustadz2.jpeg" alt="Humas">
-                    <h3>Ustadzah Roddatul</h3>
-                    <h4>Humas</h4>
-                    <p>Mengelola hubungan eksternal pondok.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+			}
+		</script>
+	</head>
+	<body>
+		<div class="navbar">
+			<div class="hamburger" onclick="toggleNavbar()">
+				<span class="bar"></span>
+				<span class="bar"></span>
+				<span class="bar"></span>
+			</div>
+			<div class="navbar-links">
+				<a href="index.html">Home</a>
+				<a href="ustadz.html">Daftar Ustadz</a>
+				<a href="kitab.html">Kitab</a>
+				<a href="ekskul.html">Ekskul</a>
+				<a href="dokumentasi.html">Dokumentasi</a>
+				<a href="kegiatan.html">Kegiatan</a>
+				<a href="tingkatan.html">Tingkatan</a>
+				<a href="struktur.html">Struktur Organisasi</a>
+				<a href="pengumuman.html">Pengumuman</a>
+			</div>
+		</div>
+		<div class="section">
+			<h2>Struktur Organisasi</h2>
+			<div class="org-container">
+				<div class="org-card">
+					<img src="ustadz2.jpeg" alt="Ketua Pondok">
+					<h3>Ustadz Syakur</h3>
+					<h4>Ketua Pondok</h4>
+					<p>Memimpin dan mengarahkan kebijakan pendidikan pondok.</p>
+				</div>
+				<div class="org-card">
+					<img src="ustadz2.jpeg" alt="Wakil Pondok">
+					<h3>Ustadz Ismail</h3>
+					<h4>Wakil Pondok</h4>
+					<p>Mendukung ketua dalam menjalankan program pondok.</p>
+				</div>
+				<div class="org-card">
+					<img src="ustadz2.jpeg" alt="Bendahara">
+					<h3>Ustadz Sahal</h3>
+					<h4>Bendahara</h4>
+					<p>Mengelola keuangan dan anggaran pondok.</p>
+				</div>
+				<div class="org-card">
+					<img src="ustadz2.jpeg" alt="Sekretaris">
+					<h3>Ustadzah Siti</h3>
+					<h4>Sekretaris</h4>
+					<p>Mengurus administrasi dan dokumentasi pondok.</p>
+				</div>
+				<div class="org-card">
+					<img src="ustadz2.jpeg" alt="Humas">
+					<h3>Ustadzah Roddatul</h3>
+					<h4>Humas</h4>
+					<p>Mengelola hubungan eksternal pondok.</p>
+				</div>
+				<div class="org-card">
+					<img src="ustadz2.jpeg" alt="Koordinator Keamanan">
+					<h3>Ustadz Budi</h3>
+					<h4>Koordinator Keamanan</h4>
+					<p>Menjaga keamanan lingkungan pondok.</p>
+				</div>
+				<div class="org-card">
+					<img src="ustadz2.jpeg" alt="Koordinator Kebersihan">
+					<h3>Ustadzah Aisyah</h3>
+					<h4>Koordinator Kebersihan</h4>
+					<p>Mengatur kebersihan lingkungan pondok.</p>
+				</div>
+				<div class="org-card">
+					<img src="ustadz2.jpeg" alt="Koordinator Pendidikan">
+					<h3>Ustadz Rahman</h3>
+					<h4>Koordinator Pendidikan</h4>
+					<p>Mengawasi dan mengatur program pendidikan pondok.</p>
+				</div>
+				<div class="org-card">
+					<img src="ustadz2.jpeg" alt="Koordinator Asrama">
+					<h3>Ustadzah Aminah</h3>
+					<h4>Koordinator Asrama</h4>
+					<p>Mengatur kehidupan dan kegiatan di asrama pondok.</p>
+				</div>
+				<div class="org-card">
+					<img src="ustadz2.jpeg" alt="Koordinator Konsumsi">
+					<h3>Ustadz Hasan</h3>
+					<h4>Koordinator Konsumsi</h4>
+					<p>Mengatur penyediaan konsumsi untuk santri.</p>
+				</div>
+			</div>
+		</div>
+	</body>
+	</html>
