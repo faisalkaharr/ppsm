@@ -6,14 +6,15 @@
     <title>Halaman Pembuka</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: linear-gradient(to right, #0a3d62, #1abc9c);
+            background: linear-gradient(to right, #6A1B9A, #42A5F5);
             color: white;
+            text-align: center;
         }
         .header {
             display: flex;
@@ -48,25 +49,27 @@
         }
         .menu {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(4, 1fr); /* 4 kolom */
             gap: 15px;
             width: 90%;
-            max-width: 800px;
+            max-width: 1200px;
             margin-top: 20px;
         }
         .menu a {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 20px;
+            background: linear-gradient(135deg, #4A00E0, #8E2DE2);
+            padding: 15px 20px;
             text-align: center;
-            border-radius: 10px;
+            border-radius: 25px;
             text-decoration: none;
             color: white;
             font-weight: bold;
-            transition: transform 0.3s ease, background 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            flex: 0 0 auto;
         }
         .menu a:hover {
-            transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
         .section {
             width: 90%;
@@ -81,10 +84,20 @@
             border-radius: 10px;
             text-align: center;
             transition: transform 0.3s ease, background 0.3s ease;
+            width: 100%;
         }
         .card:hover {
             transform: scale(1.05);
             background: rgba(26, 188, 156, 0.9);
+        }
+        .visi-misi {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+        .visi-misi .card {
+            width: 100%;
         }
     </style>
     <script>
@@ -114,14 +127,14 @@
         </div>
     </div>
     <div class="menu">
-        <a href="ustadz.html">📚 Daftar Ustadz</a>
-        <a href="ekskul.html">🎭 Ekstrakurikuler</a>
-        <a href="dokumentasi.html">📸 Dokumentasi</a>
-        <a href="kegiatan.html">📅 Kegiatan</a>
-        <a href="kitab.html">📖 Kitab yang Dipelajari</a>
-        <a href="tingkatan.html">🏫 Tingkatan</a>
-        <a href="struktur.html">📌 Struktur Organisasi</a>
-        <a href="pengumuman.html">📢 Pengumuman</a>
+        <a href="ustadz.html"> ‍ Daftar Ustadz</a>
+        <a href="ekskul.html">  Ekstrakurikuler</a>
+        <a href="dokumentasi.html">  Dokumentasi</a>
+        <a href="kegiatan.html">  Kegiatan</a>
+        <a href="kitab.html">  Kitab yang Dipelajari</a>
+        <a href="tingkatan.html">  Tingkatan</a>
+        <a href="struktur.html">  Struktur Organisasi</a>
+        <a href="pengumuman.html">  Pengumuman</a>
     </div>
     <div class="section">
         <h2>Profil Pendiri Pondok</h2>
